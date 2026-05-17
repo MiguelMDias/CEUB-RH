@@ -1,7 +1,6 @@
 /* ============================================================
    CEUB RH – Estilos globais
    Organizado por seção para facilitar manutenção
-   Responsivo: Desktop → Tablet (≤1024px) → Mobile (≤640px)
 ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
@@ -75,7 +74,9 @@ body {
   letter-spacing: -0.3px;
 }
 
-.brand-logo span { color: var(--blue-mid); }
+.brand-logo span {
+  color: var(--blue-mid);
+}
 
 .brand-sub {
   font-size: 11px;
@@ -115,7 +116,9 @@ body {
   font-weight: 500;
 }
 
-.nav-item .ti { font-size: 16px; }
+.nav-item .ti {
+  font-size: 16px;
+}
 
 .sidebar-footer {
   padding: 16px 12px;
@@ -123,7 +126,7 @@ body {
 }
 
 /* ------------------------------------------------------------
-   Usuário logado
+   Usuário logado (rodapé da sidebar)
 ------------------------------------------------------------ */
 .user-info {
   display: flex;
@@ -145,46 +148,15 @@ body {
   flex-shrink: 0;
 }
 
-.user-name { font-size: 12px; font-weight: 500; color: #fff; }
-.user-role { font-size: 11px; color: rgba(255, 255, 255, 0.45); }
-
-/* ------------------------------------------------------------
-   Botão Hamburger — escondido no desktop
------------------------------------------------------------- */
-.hamburger {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 8px;
-  color: var(--blue);
-  font-size: 22px;
-  flex-shrink: 0;
-  transition: background 0.15s;
+.user-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
 }
 
-.hamburger:hover { background: var(--gray-bg); }
-
-/* ------------------------------------------------------------
-   Overlay escuro (mobile/tablet com sidebar aberta)
------------------------------------------------------------- */
-.sidebar-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 150;
-  opacity: 0;
-  transition: opacity 0.28s;
-}
-
-.sidebar-overlay.active {
-  display: block;
-  opacity: 1;
+.user-role {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 /* ------------------------------------------------------------
@@ -207,7 +179,7 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  gap: 12px;
+  gap: 10px;
 }
 
 .topbar-title {
@@ -224,7 +196,6 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-shrink: 0;
 }
 
 .notif-btn {
@@ -252,7 +223,7 @@ body {
 }
 
 /* ------------------------------------------------------------
-   Conteúdo e telas
+   Área de conteúdo e telas
 ------------------------------------------------------------ */
 .content {
   flex: 1;
@@ -260,11 +231,16 @@ body {
   padding: 24px;
 }
 
-.screen { display: none; }
-.screen.active { display: block; }
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
 
 /* ------------------------------------------------------------
-   Cards de estatística
+   Cards de estatística (resumo)
 ------------------------------------------------------------ */
 .stats-grid {
   display: grid;
@@ -291,23 +267,40 @@ body {
   font-size: 18px;
 }
 
-.stat-label { font-size: 11px; color: var(--gray-text); }
-.stat-value { font-size: 22px; font-weight: 600; color: #111827; margin-top: 2px; }
-.stat-sub   { font-size: 11px; color: var(--gray-text); margin-top: 2px; }
+.stat-label {
+  font-size: 11px;
+  color: var(--gray-text);
+  font-weight: 400;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111827;
+  margin-top: 2px;
+}
+
+.stat-sub {
+  font-size: 11px;
+  color: var(--gray-text);
+  margin-top: 2px;
+}
 
 /* ------------------------------------------------------------
-   Cabeçalho de seção
+   Cabeçalhos de seção
 ------------------------------------------------------------ */
 .section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 14px;
-  flex-wrap: wrap;
-  gap: 8px;
 }
 
-.section-title { font-size: 14px; font-weight: 600; color: #111827; }
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
 
 /* ------------------------------------------------------------
    Botões
@@ -323,7 +316,6 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  white-space: nowrap;
 }
 
 .btn-primary {
@@ -342,9 +334,12 @@ body {
 }
 
 .btn-primary:hover { background: #1D4ED8; }
+
 .btn-blue  { background: var(--blue-mid); color: #fff; }
 .btn-blue:hover { background: #1D4ED8; }
+
 .btn-green { background: var(--green); color: #fff; }
+
 .btn-gray  { background: var(--gray-bg); color: #374151; border: 0.5px solid var(--gray-border); }
 
 /* ------------------------------------------------------------
@@ -354,13 +349,11 @@ body {
   display: flex;
   gap: 10px;
   margin-bottom: 14px;
-  flex-wrap: wrap;
 }
 
 .search-wrap {
   position: relative;
   flex: 1;
-  min-width: 180px;
 }
 
 .search-wrap .ti {
@@ -384,6 +377,7 @@ body {
   background: var(--white);
 }
 
+/* Select padrão reutilizável */
 .select-filter {
   padding: 7px 12px;
   border: 1px solid var(--gray-border);
@@ -396,14 +390,8 @@ body {
 }
 
 /* ------------------------------------------------------------
-   Tabelas — scroll horizontal em telas pequenas
+   Tabelas
 ------------------------------------------------------------ */
-.table-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: 10px;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -412,10 +400,11 @@ table {
   overflow: hidden;
   border: 0.5px solid var(--gray-border);
   font-size: 13px;
-  min-width: 500px;
 }
 
-thead tr { background: var(--gray-bg); }
+thead tr {
+  background: var(--gray-bg);
+}
 
 th {
   padding: 10px 14px;
@@ -425,7 +414,6 @@ th {
   color: var(--gray-text);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  white-space: nowrap;
 }
 
 td {
@@ -434,7 +422,9 @@ td {
   color: #374151;
 }
 
-tbody tr:hover { background: #FAFAFA; }
+tbody tr:hover {
+  background: #FAFAFA;
+}
 
 /* ------------------------------------------------------------
    Badges
@@ -446,14 +436,12 @@ tbody tr:hover { background: #FAFAFA; }
   border-radius: 20px;
   font-size: 11px;
   font-weight: 500;
-  white-space: nowrap;
 }
 
 .badge-green  { background: var(--green-light);  color: #15803D; }
 .badge-yellow { background: var(--yellow-light); color: #B45309; }
 .badge-red    { background: var(--red-light);    color: #B91C1C; }
 .badge-blue   { background: var(--blue-light);   color: #1D4ED8; }
-
 /* ------------------------------------------------------------
    Formulários
 ------------------------------------------------------------ */
@@ -471,13 +459,27 @@ tbody tr:hover { background: #FAFAFA; }
   gap: 14px;
 }
 
-.form-field { display: flex; flex-direction: column; gap: 5px; }
-.form-field.full { grid-column: 1 / -1; }
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-.vermais_meio { text-align: center; font-weight: bold; }
-.vermaisfundo { background-color: #eaebec; }
-
-.form-field label { font-size: 12px; font-weight: 500; color: black; }
+.form-field.full {
+  grid-column: 1 / -1;
+}
+.vermais_meio{
+  text-align: center;
+  font-weight: bold;
+}
+.vermaisfundo{
+  background-color: #eaebec;
+}
+.form-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+}
 
 .form-field input,
 .form-field select,
@@ -499,19 +501,24 @@ tbody tr:hover { background: #FAFAFA; }
   background: #fff;
 }
 
-.form-field textarea { resize: vertical; min-height: 80px; }
+.form-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
 
 .form-actions {
   display: flex;
   gap: 10px;
   margin-top: 16px;
-  flex-wrap: wrap;
 }
 
 /* ------------------------------------------------------------
-   Estrelas
+   Avaliação por estrelas
 ------------------------------------------------------------ */
-.stars { display: flex; gap: 4px; }
+.stars {
+  display: flex;
+  gap: 4px;
+}
 
 .star {
   font-size: 18px;
@@ -520,7 +527,9 @@ tbody tr:hover { background: #FAFAFA; }
   transition: color 0.1s;
 }
 
-.star.filled { color: #F59E0B; }
+.star.filled {
+  color: #F59E0B;
+}
 
 /* ------------------------------------------------------------
    Card de funcionário
@@ -534,7 +543,6 @@ tbody tr:hover { background: #FAFAFA; }
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
-  flex-wrap: wrap;
 }
 
 .emp-avatar {
@@ -551,12 +559,26 @@ tbody tr:hover { background: #FAFAFA; }
   flex-shrink: 0;
 }
 
-.emp-info h3 { font-size: 15px; font-weight: 600; color: #111827; }
-.emp-info p  { font-size: 12px; color: var(--gray-text); margin-top: 2px; }
-.emp-tags    { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.emp-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.emp-info p {
+  font-size: 12px;
+  color: var(--gray-text);
+  margin-top: 2px;
+}
+
+.emp-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
 
 /* ------------------------------------------------------------
-   Gráfico de barras
+   Gráfico de barras verticais
 ------------------------------------------------------------ */
 .chart-wrap {
   background: var(--white);
@@ -565,7 +587,11 @@ tbody tr:hover { background: #FAFAFA; }
   border: 0.5px solid var(--gray-border);
 }
 
-.chart-subtitle { font-size: 11px; color: var(--gray-text); margin-bottom: 10px; }
+.chart-subtitle {
+  font-size: 11px;
+  color: var(--gray-text);
+  margin-bottom: 10px;
+}
 
 .chart-bars {
   display: flex;
@@ -583,7 +609,11 @@ tbody tr:hover { background: #FAFAFA; }
   gap: 4px;
 }
 
-.bar-value { font-size: 11px; font-weight: 500; color: #374151; }
+.bar-value {
+  font-size: 11px;
+  font-weight: 500;
+  color: #374151;
+}
 
 .bar {
   width: 100%;
@@ -594,27 +624,41 @@ tbody tr:hover { background: #FAFAFA; }
 }
 
 .bar:hover { opacity: 1; }
-.bar--destaque     { opacity: 1; background: var(--blue) !important; }
-.bar--red          { background: var(--red); opacity: 0.5; }
+
+/* Variações de cor de barra */
+.bar--destaque  { opacity: 1; background: var(--blue) !important; }
+.bar--red       { background: var(--red); opacity: 0.5; }
 .bar--red-destaque { opacity: 0.9; }
 
-.bar-label            { font-size: 10px; color: var(--gray-text); }
-.bar-label--destaque  { font-weight: 600; color: var(--blue); }
+.bar-label {
+  font-size: 10px;
+  color: var(--gray-text);
+}
+
+.bar-label--destaque {
+  font-weight: 600;
+  color: var(--blue);
+}
 
 /* ------------------------------------------------------------
-   Donut
+   Gráfico de rosca (donut)
 ------------------------------------------------------------ */
 .donut-wrap {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-top: 14px;
-  flex-wrap: wrap;
 }
 
-.donut-svg { flex-shrink: 0; }
+.donut-svg {
+  flex-shrink: 0;
+}
 
-.donut-legend { display: flex; flex-direction: column; gap: 8px; }
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 .legend-item {
   display: flex;
@@ -624,7 +668,119 @@ tbody tr:hover { background: #FAFAFA; }
   color: #374151;
 }
 
-.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------
+   Indicadores de frequência/disciplina (tela Avaliações)
+------------------------------------------------------------ */
+
+/* Grid de 4 cards pequenos */
+.aval-indicadores-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.aval-ind-card {
+  background: var(--white);
+  border: 0.5px solid var(--gray-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.aval-ind-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.aval-ind-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.aval-ind-label {
+  font-size: 11px;
+  color: var(--gray-text);
+  margin-bottom: 2px;
+}
+
+.aval-ind-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.aval-ind-sub {
+  font-size: 11px;
+  color: var(--gray-text);
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ------------------------------------------------------------
+   Treinamentos (tela Avaliações)
+------------------------------------------------------------ */
+
+.treinamento-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--gray-border);
+}
+
+.treinamento-item:last-child {
+  border-bottom: none;
+}
+
+.treinamento-icone {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.treinamento-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.treinamento-nome {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.treinamento-meta {
+  font-size: 11px;
+  color: var(--gray-text);
+  margin-top: 2px;
+}
 
 /* ------------------------------------------------------------
    Divisor de seção
@@ -636,9 +792,14 @@ tbody tr:hover { background: #FAFAFA; }
 }
 
 /* ------------------------------------------------------------
-   Barras horizontais de desempenho
+   Barras horizontais de desempenho (Relatórios)
 ------------------------------------------------------------ */
-.perf-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.perf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
 
 .perf-header {
   display: flex;
@@ -648,9 +809,20 @@ tbody tr:hover { background: #FAFAFA; }
   margin-bottom: 4px;
 }
 
-.perf-header span:last-child { font-weight: 500; }
-.perf-bar-bg { height: 8px; background: var(--gray-border); border-radius: 4px; }
-.perf-bar    { height: 100%; border-radius: 4px; }
+.perf-header span:last-child {
+  font-weight: 500;
+}
+
+.perf-bar-bg {
+  height: 8px;
+  background: var(--gray-border);
+  border-radius: 4px;
+}
+
+.perf-bar {
+  height: 100%;
+  border-radius: 4px;
+}
 
 /* ------------------------------------------------------------
    Calendário mini
@@ -680,7 +852,11 @@ tbody tr:hover { background: #FAFAFA; }
   text-align: center;
 }
 
-.cal-day-name { font-size: 10px; color: var(--gray-text); padding: 3px 0; }
+.cal-day-name {
+  font-size: 10px;
+  color: var(--gray-text);
+  padding: 3px 0;
+}
 
 .cal-day {
   font-size: 11px;
@@ -698,7 +874,9 @@ tbody tr:hover { background: #FAFAFA; }
   font-weight: 600;
 }
 
-.cal-day.has-ev { position: relative; }
+.cal-day.has-ev {
+  position: relative;
+}
 
 .cal-day.has-ev::after {
   content: '';
@@ -713,7 +891,7 @@ tbody tr:hover { background: #FAFAFA; }
 }
 
 /* ------------------------------------------------------------
-   Duas colunas
+   Layout de duas colunas
 ------------------------------------------------------------ */
 .two-col {
   display: grid;
@@ -730,95 +908,19 @@ tbody tr:hover { background: #FAFAFA; }
   align-items: center;
   padding: 9px 0;
   border-bottom: 0.5px solid var(--gray-border);
-  gap: 8px;
 }
 
-.comp-row:last-child { border-bottom: none; }
-.comp-label { font-size: 13px; color: #374151; }
-
-/* ------------------------------------------------------------
-   Indicadores de frequência (Avaliações)
------------------------------------------------------------- */
-.aval-indicadores-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 14px;
+.comp-row:last-child {
+  border-bottom: none;
 }
 
-.aval-ind-card {
-  background: var(--white);
-  border: 0.5px solid var(--gray-border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.aval-ind-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
-.aval-ind-info { flex: 1; min-width: 0; }
-.aval-ind-label { font-size: 11px; color: var(--gray-text); margin-bottom: 2px; }
-.aval-ind-value { font-size: 24px; font-weight: 600; color: #111827; line-height: 1.1; }
-
-.aval-ind-sub {
-  font-size: 11px;
-  color: var(--gray-text);
-  margin-top: 4px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-/* ------------------------------------------------------------
-   Treinamentos (Avaliações)
------------------------------------------------------------- */
-.treinamento-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--gray-border);
-}
-
-.treinamento-item:last-child { border-bottom: none; }
-
-.treinamento-icone {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  flex-shrink: 0;
-}
-
-.treinamento-info { flex: 1; min-width: 0; }
-
-.treinamento-nome {
+.comp-label {
   font-size: 13px;
-  font-weight: 500;
-  color: #111827;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #374151;
 }
 
-.treinamento-meta { font-size: 11px; color: var(--gray-text); margin-top: 2px; }
-
 /* ------------------------------------------------------------
-   Toast
+   Toast de notificação
 ------------------------------------------------------------ */
 .toast {
   position: fixed;
@@ -839,15 +941,58 @@ tbody tr:hover { background: #FAFAFA; }
   max-width: calc(100vw - 48px);
 }
 
-.toast.show { opacity: 1; }
+.toast.show {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   Botão Hamburger — escondido no desktop
+------------------------------------------------------------ */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  color: var(--blue);
+  font-size: 22px;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.hamburger:hover {
+  background: var(--gray-bg);
+}
+
+/* ------------------------------------------------------------
+   Overlay escuro (mobile/tablet com sidebar aberta)
+------------------------------------------------------------ */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 150;
+  opacity: 0;
+  transition: opacity 0.28s;
+}
+
+.sidebar-overlay.active {
+  display: block;
+  opacity: 1;
+}
 
 
 /* ============================================================
-   TABLET  (≤ 1024px)
+   RESPONSIVO — TABLET  (≤ 1024px)
 ============================================================ */
 @media (max-width: 1024px) {
 
-  /* Sidebar desliza como gaveta */
+  /* Sidebar vira gaveta deslizante */
   .sidebar {
     position: fixed;
     top: 0;
@@ -866,7 +1011,7 @@ tbody tr:hover { background: #FAFAFA; }
     display: flex;
   }
 
-  .topbar { padding: 0 16px; }
+  .topbar  { padding: 0 16px; }
   .content { padding: 16px; }
 
   /* Stats: 2 colunas */
@@ -874,15 +1019,20 @@ tbody tr:hover { background: #FAFAFA; }
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Indicadores: 2 colunas */
+  /* Indicadores de avaliação: 2 colunas */
   .aval-indicadores-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Tabela com scroll horizontal */
+  table {
+    min-width: 480px;
   }
 }
 
 
 /* ============================================================
-   MOBILE  (≤ 640px)
+   RESPONSIVO — MOBILE  (≤ 640px)
 ============================================================ */
 @media (max-width: 640px) {
 
@@ -893,6 +1043,7 @@ tbody tr:hover { background: #FAFAFA; }
 
   body { background: var(--white); }
 
+  /* Topbar compacta */
   .topbar {
     padding: 0 12px;
     height: 52px;
@@ -929,7 +1080,7 @@ tbody tr:hover { background: #FAFAFA; }
   .form-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: 1; }
 
-  /* Ações: empilhadas */
+  /* Ações: botões empilhados */
   .form-actions { flex-direction: column; }
   .form-actions .btn-sm {
     width: 100%;
@@ -942,31 +1093,31 @@ tbody tr:hover { background: #FAFAFA; }
   .select-filter { width: 100%; }
 
   /* Tabela */
-  table { font-size: 12px; }
-  th, td { padding: 8px 10px; }
+  table    { font-size: 12px; min-width: 420px; }
+  th, td   { padding: 8px 10px; }
+
+  /* Seção header */
+  .section-header { flex-wrap: wrap; }
 
   /* Gráfico compacto */
   .chart-bars { height: 80px; }
   .bar-label  { font-size: 9px; }
 
   /* Card funcionário */
-  .emp-card { padding: 14px; gap: 12px; }
-  .emp-avatar { width: 44px; height: 44px; font-size: 16px; }
+  .emp-card    { padding: 14px; gap: 12px; }
+  .emp-avatar  { width: 44px; height: 44px; font-size: 16px; }
   .emp-info h3 { font-size: 14px; }
 
   /* Competências */
   .comp-row { flex-wrap: wrap; }
 
-  /* Treinamentos: nome quebra */
+  /* Treinamentos: nome pode quebrar linha */
   .treinamento-nome { white-space: normal; }
-
-  /* Seção header */
-  .section-header { flex-wrap: wrap; }
 
   /* Divisor */
   .section-divider { margin: 18px 0 16px; }
 
-  /* Toast */
+  /* Toast ocupa a largura da tela */
   .toast {
     bottom: 16px;
     right: 12px;
