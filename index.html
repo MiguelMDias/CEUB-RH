@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEUB RH – Sistema de Gestão</title>
+
+  <!-- Ícones e Fontes -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============================================================
+       SIDEBAR – Navegação lateral
+  ============================================================ -->
+  <div class="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-logo">CEUB <span>RH</span></div>
+      <div class="brand-sub">Sistema de Gestão de RH</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-item active" onclick="go('dashboard', this)">
+        <i class="ti ti-layout-dashboard"></i> Dashboard
+      </div>
+      <div class="nav-item" onclick="go('candidatos', this)">
+        <i class="ti ti-users"></i> Candidatos
+      </div>
+      <div class="nav-item" onclick="go('entrevistas', this)">
+        <i class="ti ti-calendar-event"></i> Entrevistas
+      </div>
+      <div class="nav-item" onclick="go('avaliacoes', this)">
+        <i class="ti ti-star"></i> Avaliações
+      </div>
+      <!-- Relatórios foi unido ao Dashboard – não precisa mais de item separado -->
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar">AD</div>
+        <div>
+          <div class="user-name">Admin</div>
+          <div class="user-role">Gestor de RH</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /SIDEBAR -->
+
+
+  <!-- ============================================================
+       ÁREA PRINCIPAL
+  ============================================================ -->
+  <div class="main">
+
+    <!-- Barra superior -->
+    <div class="topbar">
+      <!-- Botão hamburger — visível apenas em mobile/tablet -->
+      <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+        <i class="ti ti-menu-2"></i>
+      </button>
+
+      <span class="topbar-title" id="page-title">Dashboard</span>
+
+      <div class="topbar-right">
+        <div class="notif-btn">
+          <i class="ti ti-bell"></i>
+          <span class="notif-dot"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay escuro — fecha a sidebar ao clicar fora em mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Conteúdo das telas -->
+    <div class="content">
+
+
+      <!-- ========================================================
+           TELA: DASHBOARD
+      ======================================================== -->
+      <div class="screen active" id="screen-dashboard">
+
+        <!-- Cards de resumo -->
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <img src="/assets/pessoas.png" alt="Funcionários" width="40">
+            </div>
+            <div class="stat-label">Funcionários</div>
+            <div class="stat-value">447</div>
+            <div class="stat-sub"></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <img src="/assets/do-utilizador.png" alt="Candidatos" width="40">
+            </div>
+            <div class="stat-label">Candidatos Ativos</div>
+            <div class="stat-value">38</div>
+            <div class="stat-sub">aumento de 24%</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <img src="/assets/empregado.png" alt="Entrevistas" width="40">
+            </div>
+            <div class="stat-label">Entrevistas Hoje</div>
+            <div class="stat-value">6</div>
+            <div class="stat-sub">2 pendentes</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <img src="/assets/desqualificado.png" alt="Faltas" width="40">
+            </div>
+            <div class="stat-label">Desistencias</div>
+            <div class="stat-value">6</div>
+            <div class="stat-sub">baixa de 70%</div>
+          </div>
+
+        </div>
+        <!-- /Cards de resumo -->
+
+        <!-- Gráficos: Contratações + Funcionários por cargo -->
+        <div class="two-col">
+
+          <!-- Gráfico de barras: Contratações -->
+          <div class="chart-wrap">
+            <div class="section-title">Contratações por mês</div>
+            <div class="chart-bars">
+              <div class="bar-col">
+                <span class="bar-value">5</span>
+                <div class="bar" style="height:45px"></div>
+                <div class="bar-label">Dez</div>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">7</span>
+                <div class="bar" style="height:60px"></div>
+                <div class="bar-label">Jan</div>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">4</span>
+                <div class="bar" style="height:38px"></div>
+                <div class="bar-label">Fev</div>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">9</span>
+                <div class="bar" style="height:75px"></div>
+                <div class="bar-label">Mar</div>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">6</span>
+                <div class="bar" style="height:55px"></div>
+                <div class="bar-label">Abr</div>
+              </div>
+              <div class="bar-col">
+                <span class="bar-value">10</span>
+                <div class="bar bar--destaque" style="height:90px"></div>
+                <div class="bar-label bar-label--destaque">Mai</div>
+              </div>
+            </div>
+          </div>
+          <!-- /Gráfico de barras -->
+
+          <!-- Gráfico de rosca: Funcionários por cargo -->
+          <div class="chart-wrap">
+            <div class="section-title">Funcionários por cargo</div>
+            <div class="donut-wrap">
+
+              <svg class="donut-svg" width="90" height="90" viewBox="0 0 90 90">
+                <circle cx="45" cy="45" r="32" fill="none" stroke="#E5E7EB" stroke-width="14"/>
+                <circle cx="45" cy="45" r="32" fill="none" stroke="#3B82F6" stroke-width="14" stroke-dasharray="72 129"  stroke-dashoffset="0"    stroke-linecap="round"/>
+                <circle cx="45" cy="45" r="32" fill="none" stroke="#22C55E" stroke-width="14" stroke-dasharray="54 147"  stroke-dashoffset="-72"   stroke-linecap="round"/>
+                <circle cx="45" cy="45" r="32" fill="none" stroke="#F59E0B" stroke-width="14" stroke-dasharray="32 169"  stroke-dashoffset="-126"  stroke-linecap="round"/>
+                <circle cx="45" cy="45" r="32" fill="none" stroke="#8B5CF6" stroke-width="14" stroke-dasharray="24 177"  stroke-dashoffset="-158"  stroke-linecap="round"/>
+                <circle cx="45" cy="45" r="32" fill="none" stroke="#EF4444" stroke-width="14" stroke-dasharray="12 189"  stroke-dashoffset="-182"  stroke-linecap="round"/>
+                <circle cx="45" cy="45" r="32" fill="none" stroke="#1E3A5F" stroke-width="14" stroke-dasharray="6  195"  stroke-dashoffset="-194"  stroke-linecap="round"/>
+              </svg>
+
+              <div class="donut-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:#3B82F6"></div> Separadores 36%</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#22C55E"></div> Estoquistas 27%</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#F59E0B"></div> Conferentes 16%</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#8B5CF6"></div> Operadores 12%</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#EF4444"></div> Motoristas 6%</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#1E3A5F"></div> Supervisores 3%</div>
+              </div>
+
+            </div>
+          </div>
+          <!-- /Gráfico de rosca -->
+
+        </div>
+        <!-- /Gráficos -->
+
+
+        <!-- ── Divisor visual entre Dashboard e Relatórios ── -->
+        <div class="section-divider"></div>
+
+
+        <!-- Cabeçalho de Relatórios com filtros -->
+        <div class="section-header" style="margin-bottom:14px">
+          <div class="section-title">Relatórios e indicadores</div>
+          <div style="display:flex;gap:8px">
+            <select class="select-filter">
+              <option>Mensal</option>
+              <option>Semanal</option>
+              <option>Anual</option>
+            </select>
+            <select class="select-filter">
+              <option>Todos os setores</option>
+              <option>Logística</option>
+              <option>Operações</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Cards de indicadores -->
+        <div class="stats-grid" style="margin-bottom:14px">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ti ti-repeat" style="font-size:22px;color:var(--red)"></i></div>
+            <div class="stat-label">Rotatividade</div>
+            <div class="stat-value">8.2%</div>
+            <div class="stat-sub">Este mês</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ti ti-user-minus" style="font-size:22px;color:var(--yellow)"></i></div>
+            <div class="stat-label">Faltas semana</div>
+            <div class="stat-value">14</div>
+            <div class="stat-sub">6 Atestados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ti ti-star" style="font-size:22px;color:var(--blue-mid)"></i></div>
+            <div class="stat-label">Desempenho médio</div>
+            <div class="stat-value">3.8</div>
+            <div class="stat-sub">De 5.0 possível</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ti ti-school" style="font-size:22px;color:var(--green)"></i></div>
+            <div class="stat-label">Treinamentos</div>
+            <div class="stat-value">62</div>
+            <div class="stat-sub">Funcionários treinados</div>
+          </div>
+        </div>
+
+        <!-- Gráficos de relatório -->
+        <div class="two-col">
+          <div class="chart-wrap">
+            <div class="section-title" style="margin-bottom:4px">Rotatividade mensal</div>
+            <div class="chart-subtitle">Percentual de saídas</div>
+            <div class="chart-bars" style="height:110px">
+              <div class="bar-col">2<div class="bar bar--red" style="height:40px"></div><div class="bar-label">Dez</div></div>
+              <div class="bar-col">3<div class="bar bar--red" style="height:55px"></div><div class="bar-label">Jan</div></div>
+              <div class="bar-col">1<div class="bar bar--red" style="height:30px"></div><div class="bar-label">Fev</div></div>
+              <div class="bar-col">4<div class="bar bar--red" style="height:65px"></div><div class="bar-label">Mar</div></div>
+              <div class="bar-col">3<div class="bar bar--red" style="height:48px"></div><div class="bar-label">Abr</div></div>
+              <div class="bar-col">5<div class="bar bar--red bar--red-destaque" style="height:80px"></div><div class="bar-label bar-label--destaque">Mai</div></div>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <div class="section-title" style="margin-bottom:4px">Desempenho por setor</div>
+            <div class="chart-subtitle">Nota média de avaliação</div>
+            <div class="perf-list">
+              <div class="perf-item">
+                <div class="perf-header"><span>Logística</span><span>4.2</span></div>
+                <div class="perf-bar-bg"><div class="perf-bar" style="width:84%;background:var(--blue-mid)"></div></div>
+              </div>
+              <div class="perf-item">
+                <div class="perf-header"><span>Operações</span><span>3.7</span></div>
+                <div class="perf-bar-bg"><div class="perf-bar" style="width:74%;background:var(--green)"></div></div>
+              </div>
+              <div class="perf-item">
+                <div class="perf-header"><span>Supervisão</span><span>4.6</span></div>
+                <div class="perf-bar-bg"><div class="perf-bar" style="width:92%;background:var(--yellow)"></div></div>
+              </div>
+              <div class="perf-item">
+                <div class="perf-header"><span>Conferência</span><span>3.4</span></div>
+                <div class="perf-bar-bg"><div class="perf-bar" style="width:68%;background:var(--red);opacity:0.7"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão exportar -->
+        <div style="display:flex;justify-content:flex-end;margin-top:14px">
+          <button class="btn-sm btn-blue" onclick="showToast('Exportando relatório...')" style="padding:9px 18px">
+            <i class="ti ti-download"></i> Exportar relatório
+          </button>
+        </div>
+
+      </div>
+      <!-- /TELA: DASHBOARD (Relatórios unido) -->
+
+
+      <!-- ========================================================
+           TELA: CANDIDATOS
+      ======================================================== -->
+      <div class="screen" id="screen-candidatos">
+
+        <div class="section-header">
+          <div class="section-title">Lista de candidatos</div>
+          <button class="btn-sm btn-blue" onclick="showToast('Formulário aberto!')">
+            <i class="ti ti-plus"></i> Novas vagas
+          </button>
+        </div>
+
+        <!-- Filtros -->
+        <div class="search-bar">
+          <div class="search-wrap">
+            <i class="ti ti-search"></i>
+            <input class="search-input" type="text" placeholder="Buscar por nome...">
+          </div>
+          <select class="select-filter">
+            <option>Todas as vagas</option>
+            <option>Motorista</option>
+            <option>Estoquista</option>
+            <option>Conferente</option>
+            <option>Supervisor</option>
+          </select>
+        </div>
+
+        <!-- Tabela -->
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Vaga</th>
+              <th>Data</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lucas Evaldo Alves Lopes</td>
+              <td>(61) 98533-0131</td>
+              <td>Motorista</td>
+              <td>18/05/2026</td>
+              <td><span class="badge badge-blue">Novo</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>Amanda Rottweiler</td>
+              <td>(61) 98492-1492</td>
+              <td>Estoquista</td>
+              <td>18/05/2026</td>
+              <td><span class="badge badge-blue">Novo</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>Vanessa de Mendonça Santana Alburquerque </td>
+              <td>(61) 96543-2109</td>
+              <td>Conferente</td>
+              <td>18/05/2026</td>
+              <td><span class="badge badge-blue">Novo</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>Marcelo Barboza Dias</td>
+              <td>(61) 99304-5423</td>
+              <td>Supervisor</td>
+              <td>18/05/2026</td>
+              <td><span class="badge badge-blue">Novo</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>Davi Felento </td>
+              <td>(61) 99912-9760</td>
+              <td>Estoquista</td>
+              <td>15/05/2026</td>
+              <td><span class="badge badge-yellow">Aguardando</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            <tr>
+              <td>Daniel Ferreira de Queiroz</td>
+              <td>(61) 99860-7803</td>
+              <td>Supervisor</td>
+              <td>14/05/2026</td>
+              <td><span class="badge badge-yellow">Aguardando</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>Marcos Borba Miranda </td>
+              <td>(61) 98445-7585</td>
+              <td>Conferente</td>
+              <td>15/05/2026</td>
+              <td><span class="badge badge-yellow">Aguardando</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td> Maria Garibalda Vilas Boas</td>
+              <td>(61) 99304-5423</td>
+              <td>Estoquista</td>
+              <td>12/05/2026</td>
+              <td><span class="badge badge-green">Aprovado</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>Gustavo Lima </td>
+              <td>(61) 99912-9760</td>
+              <td>Motorista</td>
+              <td>12/05/2026</td>
+              <td><span class="badge badge-green">Aprovado</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td> Henrique e juliano</td>
+              <td>(61) 99304-5423</td>
+              <td>Conferente</td>
+              <td>11/05/2026</td>
+              <td><span class="badge badge-red">Reprovado</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>Mateus e Kauan </td>
+              <td>(61) 99912-9760</td>
+              <td>Estoquista</td>
+              <td>10/05/2026</td>
+              <td><span class="badge badge-red">Reprovado</span></td>
+              <td><button class="btn-sm btn-gray" onclick="showToast('Perfil aberto')"><i class="ti ti-eye"></i></button></td>
+            </tr>
+            <tr class="vermaisfundo">
+              <td> </td>
+              <td class="vermais_meio">VER MAIS ...</td>
+              <td></td>
+              <td></td>
+              <td></td></span></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Formulário de novo candidato -->
+        <div class="form-card" style="margin-top:16px">
+          <div class="section-title" style="margin-bottom:16px">Cadastrar novo candidato</div>
+          <div class="form-grid">
+            <div class="form-field full">
+              <label>Nome completo</label>
+              <input type="text" placeholder="Nome do candidato">
+            </div>
+            <div class="form-field">
+              <label>Telefone</label>
+              <input type="text" placeholder="(61) 9 0000-0000">
+            </div>
+            <div class="form-field">
+              <label>E-mail</label>
+              <input type="email" placeholder="email@exemplo.com">
+            </div>
+            <div class="form-field full">
+              <label>Vaga desejada</label>
+              <select>
+                <option>Selecione a vaga</option>
+                <option>Estoquista</option>
+                <option>Motorista</option>
+                <option>Conferente</option>
+                <option>Supervisor</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn-sm btn-green" onclick="showToast('✓ Candidato cadastrado com sucesso!')" style="padding:9px 20px">
+              <i class="ti ti-check"></i> Salvar
+            </button>
+            <button class="btn-sm btn-gray" style="padding:9px 16px">Cancelar</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- /TELA: CANDIDATOS -->
+
+
+      <!-- ========================================================
+           TELA: ENTREVISTAS
+      ======================================================== -->
+      <div class="screen" id="screen-entrevistas">
+
+        <div class="section-header">
+          <div class="section-title">Agendamento de entrevistas</div>
+          <button class="btn-sm btn-blue" onclick="showToast('Formulário de agendamento aberto!')">
+            <i class="ti ti-plus"></i> Agendar entrevista
+          </button>
+        </div>
+
+        <!-- Calendário + Formulário de agendamento -->
+        <div class="two-col" style="margin-bottom:14px">
+
+          <div class="cal-card" style="margin-bottom:0">
+            <div class="cal-header">
+              <span>Maio 2026</span>
+              <div style="display:flex;gap:4px">
+                <div style="cursor:pointer;padding:2px 6px;border-radius:4px;color:var(--gray-text)">
+                  <i class="ti ti-chevron-left"></i>
+                </div>
+                <div style="cursor:pointer;padding:2px 6px;border-radius:4px;color:var(--gray-text)">
+                  <i class="ti ti-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+            <div class="cal-grid">
+              <div class="cal-day-name">D</div>
+              <div class="cal-day-name">S</div>
+              <div class="cal-day-name">T</div>
+              <div class="cal-day-name">Q</div>
+              <div class="cal-day-name">Q</div>
+              <div class="cal-day-name">S</div>
+              <div class="cal-day-name">S</div>
+              <!-- Semana 1 -->
+              <div class="cal-day"></div><div class="cal-day"></div><div class="cal-day"></div>
+              <div class="cal-day">1</div><div class="cal-day has-ev">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+              <!-- Semana 2 -->
+              <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
+              <div class="cal-day has-ev">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div>
+              <!-- Semana 3 -->
+              <div class="cal-day">12</div><div class="cal-day has-ev">13</div><div class="cal-day">14</div>
+              <div class="cal-day">15</div><div class="cal-day has-ev">16</div><div class="cal-day">17</div><div class="cal-day today">18</div>
+              <!-- Semana 4 -->
+              <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day has-ev">21</div>
+              <div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div>
+              <!-- Semana 5 -->
+              <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+              <div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day"></div><div class="cal-day"></div>
+            </div>
+          </div>
+
+          <div class="form-card" style="margin-bottom:0">
+            <div class="section-title" style="margin-bottom:14px">Novo agendamento</div>
+            <div class="form-field" style="margin-bottom:10px">
+              <label>Candidato</label>
+              <input type="text" placeholder="Nome do candidato">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+              <div class="form-field">
+                <label>Data</label>
+                <input type="date" value="2026-05-18">
+              </div>
+              <div class="form-field">
+                <label>Horário</label>
+                <select>
+                  <option>09:00</option><option>10:00</option><option>11:00</option>
+                  <option>14:00</option><option>15:00</option><option>16:00</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field" style="margin-bottom:14px">
+              <label>Entrevistador</label>
+              <select>
+                <option>Miguel Mendonça – RH</option>
+                <option>Davi Felinto – RH</option>
+                <option>Amanda Weiller – RH</option>
+              </select>
+            </div>
+            <button class="btn-sm btn-blue" onclick="showToast('✓ Entrevista agendada com sucesso!')" style="width:100%;justify-content:center;padding:9px">
+              <i class="ti ti-calendar-plus"></i> Confirmar agendamento
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Tabela de entrevistas -->
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data</th>
+              <th>Horário</th>
+              <th>Entrevistador</th>
+              <th>Vaga</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lucas Ferreira</td><td>18/05</td><td>09:00</td>
+              <td>Miguel Mendonça</td><td>Motorista</td>
+              <td><span class="badge badge-green">Confirmado</span></td>
+            </tr>
+            <tr>
+              <td>Mariana Costa</td><td>18/05</td><td>10:30</td>
+              <td>Davi Felinto</td><td>Estoquista</td>
+              <td><span class="badge badge-green">Confirmado</span></td>
+            </tr>
+            <tr>
+              <td>Roberto Alves</td><td>18/05</td><td>14:00</td>
+              <td>Miguel Mendonça</td><td>Conferente</td>
+              <td><span class="badge badge-yellow">Pendente</span></td>
+            </tr>
+            <tr>
+              <td>Fernanda Reis</td><td>18/05</td><td>11:00</td>
+              <td>Amanda Weiller</td><td>Motorista</td>
+              <td><span class="badge badge-red">Não compareceu</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <!-- /TELA: ENTREVISTAS -->
+
+
+      <!-- ========================================================
+           TELA: AVALIAÇÕES
+      ======================================================== -->
+      <div class="screen" id="screen-avaliacoes">
+
+        <div class="section-header">
+          <div class="section-title">Avaliação de desempenho</div>
+          <span class="badge badge-blue">Maio 2026</span>
+        </div>
+
+        <!-- Card do funcionário -->
+        <div class="emp-card">
+          <div class="emp-avatar"><img src="/assets/image-removebg-preview.png" width="100px" alt=""></div>
+          <div class="emp-info" style="flex:1">
+            <h3>Lucas Ferreira</h3>
+            <p>Separador · Logística · 3 meses</p>
+            <div class="emp-tags">
+              <span class="badge badge-blue">CLT</span>
+              <span class="badge badge-green">Ativo</span>
+            </div>
+          </div>
+          <button class="btn-sm btn-gray" onclick="showToast('Histórico aberto')">
+            <i class="ti ti-history"></i> Histórico
+          </button>
+        </div>
+
+        <!-- Competências -->
+        <div class="two-col">
+
+          <div class="form-card" style="margin-bottom:0">
+            <div class="section-title" style="margin-bottom:14px">Competências técnicas</div>
+            <div id="tech-items">
+              <div class="comp-row">
+                <span class="comp-label">Organização</span>
+                <div class="stars" data-id="org">
+                  <span class="star filled" onclick="rate('org',1)">★</span>
+                  <span class="star filled" onclick="rate('org',2)">★</span>
+                  <span class="star filled" onclick="rate('org',3)">★</span>
+                  <span class="star filled" onclick="rate('org',4)">★</span>
+                  <span class="star"        onclick="rate('org',5)">★</span>
+                </div>
+              </div>
+              <div class="comp-row">
+                <span class="comp-label">Conhecimento técnico</span>
+                <div class="stars" data-id="tec">
+                  <span class="star filled" onclick="rate('tec',1)">★</span>
+                  <span class="star filled" onclick="rate('tec',2)">★</span>
+                  <span class="star filled" onclick="rate('tec',3)">★</span>
+                  <span class="star"        onclick="rate('tec',4)">★</span>
+                  <span class="star"        onclick="rate('tec',5)">★</span>
+                </div>
+              </div>
+              <div class="comp-row">
+                <span class="comp-label">Produtividade</span>
+                <div class="stars" data-id="prod">
+                  <span class="star filled" onclick="rate('prod',1)">★</span>
+                  <span class="star filled" onclick="rate('prod',2)">★</span>
+                  <span class="star filled" onclick="rate('prod',3)">★</span>
+                  <span class="star filled" onclick="rate('prod',4)">★</span>
+                  <span class="star filled" onclick="rate('prod',5)">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card" style="margin-bottom:0">
+            <div class="section-title" style="margin-bottom:14px">Competências comportamentais</div>
+            <div class="comp-row">
+              <span class="comp-label">Trabalho em equipe</span>
+              <div class="stars">
+                <span class="star filled">★</span><span class="star filled">★</span>
+                <span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span>
+              </div>
+            </div>
+            <div class="comp-row">
+              <span class="comp-label">Comunicação</span>
+              <div class="stars">
+                <span class="star filled">★</span><span class="star filled">★</span>
+                <span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+              </div>
+            </div>
+            <div class="comp-row">
+              <span class="comp-label">Pontualidade</span>
+              <div class="stars">
+                <span class="star filled">★</span><span class="star filled">★</span>
+                <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+              </div>
+            </div>
+            <div class="comp-row">
+              <span class="comp-label">Liderança</span>
+              <div class="stars">
+                <span class="star filled">★</span><span class="star filled">★</span>
+                <span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Feedback e ações -->
+        <div class="form-card" style="margin-top:14px">
+          <div class="form-field full">
+            <label>Feedback dos gestores</label>
+            <label>Rafael Mendes - 10/04</label>
+            <textarea placeholder="" style="min-height:90px">Lucas demonstra organização, comprometimento e boa produtividade no setor logístico. Trabalha bem em equipe e contribui positivamente para as operações. Como melhoria, pode desenvolver mais o conhecimento técnico e a comunicação em situações de pressão.</textarea>
+            <label>Camila Rocha - 08/03</label>
+            <textarea placeholder="" style="min-height:90px">Lucas apresenta responsabilidade, pontualidade e boa adaptação às rotinas operacionais. Apresenta bom potencial e mantém uma performance satisfatória nas atividades exercidas.</textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn-sm btn-green" onclick="showToast('✓ Avaliação salva com sucesso!')" style="padding:9px 20px">
+              <i class="ti ti-check"></i> Salvar avaliação
+            </button>
+            <button class="btn-sm btn-blue" onclick="showToast('Relatório gerado!')" style="padding:9px 20px">
+              <i class="ti ti-file-text"></i> Gerar relatório
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <!-- /TELA: AVALIAÇÕES -->
+
+
+
+
+
+    </div>
+    <!-- /content -->
+
+  </div>
+  <!-- /ÁREA PRINCIPAL -->
+
+</div>
+<!-- /app -->
+
+<!-- Toast de notificação -->
+<div class="toast" id="toast">
+  <i class="ti ti-check" style="color:#22C55E"></i>
+  <span id="toast-msg"></span>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
