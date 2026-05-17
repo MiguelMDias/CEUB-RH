@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <!-- Overlay escuro — fecha a sidebar ao clicar fora em mobile -->
+    <!-- Overlay escuro — fecha a sidebar ao tocar fora em mobile -->
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <!-- Conteúdo das telas -->
@@ -241,7 +241,7 @@
             <div class="stat-icon"><i class="ti ti-star" style="font-size:22px;color:var(--blue-mid)"></i></div>
             <div class="stat-label">Desempenho médio</div>
             <div class="stat-value">3.8</div>
-            <div class="stat-sub">De 5.0 possível</div>
+            <div class="stat-sub">De 5.0 </div>
           </div>
           <div class="stat-card">
             <div class="stat-icon"><i class="ti ti-school" style="font-size:22px;color:var(--green)"></i></div>
@@ -607,8 +607,21 @@
       <!-- ========================================================
            TELA: AVALIAÇÕES
       ======================================================== -->
+      <div class="section-title">Buscar Funcionarios</div>
       <div class="screen" id="screen-avaliacoes">
-
+        <div class="search-bar">
+          <div class="search-wrap">
+            <i class="ti ti-search"></i>
+            <input class="search-input" type="text" placeholder="Buscar por nome...">
+          </div>
+          <select class="select-filter">
+            <option>Todas os cargos</option>
+            <option>Motorista</option>
+            <option>Estoquista</option>
+            <option>Conferente</option>
+            <option>Supervisor</option>
+          </select>
+        </div>
         <div class="section-header">
           <div class="section-title">Avaliação de desempenho</div>
           <span class="badge badge-blue">Maio 2026</span>
@@ -703,8 +716,194 @@
 
         </div>
 
+        <!-- ── Divisor ── -->
+        <div class="section-divider"></div>
+
+        <!-- Indicadores de frequência e disciplina -->
+        <div class="aval-indicadores-grid">
+
+          <!-- Faltas -->
+          <div class="aval-ind-card">
+            <div class="aval-ind-icon" style="background:var(--red-light)">
+              <i class="ti ti-user-off" style="color:var(--red)"></i>
+            </div>
+            <div class="aval-ind-info">
+              <div class="aval-ind-label">Faltas no mês</div>
+              <div class="aval-ind-value">3</div>
+              <div class="aval-ind-sub">
+                <span class="badge badge-red" style="font-size:10px">2 injustificadas</span>
+                <span class="badge badge-yellow" style="font-size:10px">1 justificada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Atrasos -->
+          <div class="aval-ind-card">
+            <div class="aval-ind-icon" style="background:var(--yellow-light)">
+              <i class="ti ti-clock-exclamation" style="color:var(--yellow)"></i>
+            </div>
+            <div class="aval-ind-info">
+              <div class="aval-ind-label">Atrasos no mês</div>
+              <div class="aval-ind-value">5</div>
+              <div class="aval-ind-sub">Acima de 10 min</div>
+            </div>
+          </div>
+
+          <!-- Advertências -->
+          <div class="aval-ind-card">
+            <div class="aval-ind-icon" style="background:#FEF2F2">
+              <i class="ti ti-alert-triangle" style="color:#B91C1C"></i>
+            </div>
+            <div class="aval-ind-info">
+              <div class="aval-ind-label">Advertências</div>
+              <div class="aval-ind-value">1</div>
+              <div class="aval-ind-sub">Escrita · Abr/2026</div>
+            </div>
+          </div>
+
+          <!-- Atestados -->
+          <div class="aval-ind-card">
+            <div class="aval-ind-icon" style="background:var(--blue-light)">
+              <i class="ti ti-file-medical" style="color:var(--blue-mid)"> <img src="/assets/nota-medica.png" width="30" alt=""></i>
+            </div>
+            <div class="aval-ind-info">
+              <div class="aval-ind-label">Atestados</div>
+              <div class="aval-ind-value">2</div>
+              <div class="aval-ind-sub"> 02/05/2026</div>
+              <div class="aval-ind-sub"> 15/05/2026</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Faltas justificadas x injustificadas + Últimos treinamentos -->
+        <div class="two-col" style="margin-top:14px">
+
+          <!-- Faltas justificadas x injustificadas -->
+          <div class="form-card" style="margin-bottom:0">
+            <div class="section-title" style="margin-bottom:14px">
+              <i class="ti ti-chart-bar" style="color:var(--blue-mid);margin-right:6px"></i>
+              Faltas justificadas × injustificadas
+            </div>
+
+            <!-- Barra comparativa -->
+            <div style="margin-bottom:16px">
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray-text);margin-bottom:6px">
+                <span>Total de faltas: <strong style="color:#111827">8</strong> no trimestre</span>
+                <span>Abr – Mai – Jun 2026</span>
+              </div>
+              <!-- Barra geral -->
+              <div style="height:10px;background:var(--gray-border);border-radius:6px;overflow:hidden;margin-bottom:12px">
+                <div style="display:flex;height:100%">
+                  <div style="width:62.5%;background:var(--red);border-radius:6px 0 0 6px" title="5 injustificadas"></div>
+                  <div style="width:37.5%;background:var(--yellow)" title="3 justificadas"></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;font-size:12px">
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div style="width:10px;height:10px;border-radius:2px;background:var(--red)"></div>
+                  <span>Injustificadas <strong>5</strong></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div style="width:10px;height:10px;border-radius:2px;background:var(--yellow)"></div>
+                  <span>Justificadas <strong>3</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini tabela mês a mês -->
+            <table style="font-size:12px;margin-top:4px">
+              <thead>
+                <tr>
+                  <th>Mês</th>
+                  <th>Injustificadas</th>
+                  <th>Justificadas</th>
+                  <th>Atestado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mar/2026</td>
+                  <td><span class="badge badge-red">1</span></td>
+                  <td><span class="badge badge-yellow">1</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Abr/2026</td>
+                  <td><span class="badge badge-red">2</span></td>
+                  <td><span class="badge badge-yellow">1</span></td>
+                  <td><span class="badge badge-blue">1</span></td>
+                </tr>
+                <tr>
+                  <td>Mai/2026</td>
+                  <td><span class="badge badge-red">2</span></td>
+                  <td>—</td>
+                  <td><span class="badge badge-blue">1</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Últimos treinamentos -->
+          <div class="form-card" style="margin-bottom:0">
+            <div class="section-title" style="margin-bottom:14px">
+              <i class="ti ti-school" style="color:var(--green);margin-right:6px"></i>
+              Últimos treinamentos
+            </div>
+
+            <div class="treinamento-item">
+              <div class="treinamento-icone" style="background:var(--green-light)">
+                <i class="ti ti-check" style="color:var(--green)"></i>
+              </div>
+              <div class="treinamento-info">
+                <div class="treinamento-nome">NR-12 – Segurança em Máquinas</div>
+                <div class="treinamento-meta">Concluído · 14/04/2026 · 8h</div>
+              </div>
+              <span class="badge badge-green">Concluído</span>
+            </div>
+
+            <div class="treinamento-item">
+              <div class="treinamento-icone" style="background:var(--green-light)">
+                <i class="ti ti-check" style="color:var(--green)"></i>
+              </div>
+              <div class="treinamento-info">
+                <div class="treinamento-nome">Integração Operacional</div>
+                <div class="treinamento-meta">Concluído · 20/02/2026 · 4h</div>
+              </div>
+              <span class="badge badge-green">Concluído</span>
+            </div>
+
+            <div class="treinamento-item">
+              <div class="treinamento-icone" style="background:var(--yellow-light)">
+                <i class="ti ti-clock" style="color:var(--yellow)"></i>
+              </div>
+              <div class="treinamento-info">
+                <div class="treinamento-nome">Operação de Empilhadeira</div>
+                <div class="treinamento-meta">Pendente · Previsto: Jun/2026 · 16h</div>
+              </div>
+              <span class="badge badge-yellow">Pendente</span>
+            </div>
+
+            <div class="treinamento-item">
+              <div class="treinamento-icone" style="background:var(--blue-light)">
+                <i class="ti ti-player-play" style="color:var(--blue-mid)"></i>
+              </div>
+              <div class="treinamento-info">
+                <div class="treinamento-nome">Boas Práticas de Armazenagem</div>
+                <div class="treinamento-meta">Em andamento · Início: 10/05/2026 · 6h</div>
+              </div>
+              <span class="badge badge-blue">Em andamento</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ── Divisor ── -->
+        <div class="section-divider"></div>
+
         <!-- Feedback e ações -->
-        <div class="form-card" style="margin-top:14px">
+        <div class="form-card" style="margin-top:0">
           <div class="form-field full">
             <label>Feedback dos gestores</label>
             <label>Rafael Mendes - 10/04</label>
