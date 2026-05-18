@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CEUB RH – Login</title>
+
+  <!-- Mesma fonte do sistema principal -->
+  <link rel="prefetch" href="main.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Tabler Icons (mesmo conjunto usado no sistema) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <style>
+    /* ── Reset & variáveis idênticas ao styles.css ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1E3A5F;
+      --blue-mid:   #3B82F6;
+      --blue-light: #EFF6FF;
+      --white:      #FFFFFF;
+      --gray-bg:    #F3F4F6;
+      --gray-border:#E5E7EB;
+      --gray-text:  #6B7280;
+      --red:        #EF4444;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F1F5F9;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Painel de dois paineis ── */
+    .login-wrapper {
+      display: flex;
+      width: 860px;
+      min-height: 520px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(30,58,95,.14);
+      border: 0.5px solid var(--gray-border);
+    }
+
+    /* ── Lado esquerdo (identidade) ── */
+    .login-brand {
+      width: 320px;
+      flex-shrink: 0;
+      background: var(--blue);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Círculos decorativos */
+    .login-brand::before,
+    .login-brand::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(59,130,246,.12);
+    }
+    .login-brand::before {
+      width: 280px; height: 280px;
+      bottom: -80px; right: -80px;
+    }
+    .login-brand::after {
+      width: 160px; height: 160px;
+      top: -40px; left: -40px;
+    }
+
+    .brand-icon {
+      width: 68px;
+      height: 68px;
+      background: rgba(59,130,246,.25);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: var(--blue-mid);
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-name span { color: var(--blue-mid); }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,.5);
+      margin-top: 6px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      line-height: 1.6;
+    }
+
+    .brand-divider {
+      width: 40px;
+      height: 2px;
+      background: rgba(59,130,246,.4);
+      border-radius: 2px;
+      margin: 20px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-features {
+      list-style: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 8px;
+    }
+
+    .brand-features li .ti {
+      font-size: 14px;
+      color: var(--blue-mid);
+    }
+
+    /* ── Lado direito (formulário) ── */
+    .login-form-side {
+      flex: 1;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 44px;
+    }
+
+    .login-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .login-subtitle {
+      font-size: 12px;
+      color: var(--gray-text);
+      margin-bottom: 32px;
+    }
+
+    /* Campos */
+    .form-field {
+      margin-bottom: 18px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap .ti {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-text);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    .input-wrap input {
+      width: 100%;
+      padding: 10px 12px 10px 38px;
+      border: 1px solid var(--gray-border);
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      color: #111827;
+      outline: none;
+      background: var(--gray-bg);
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+
+    .input-wrap input:focus {
+      border-color: var(--blue-mid);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+    }
+
+    /* Linha "Esqueci a senha" */
+    .forgot-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: -10px;
+      margin-bottom: 22px;
+    }
+
+    .forgot-link {
+      font-size: 12px;
+      color: var(--blue-mid);
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .forgot-link:hover { color: #1D4ED8; text-decoration: underline; }
+
+    /* Botão entrar */
+    .btn-login {
+      width: 100%;
+      padding: 11px;
+      background: var(--blue-mid);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-login:hover  { background: #1D4ED8; }
+    .btn-login:active { transform: scale(0.98); }
+
+    /* Rodapé do form */
+    .form-footer {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 0.5px solid var(--gray-border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(59,130,246,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-mid);
+      flex-shrink: 0;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      color: var(--gray-text);
+      line-height: 1.5;
+    }
+
+    .footer-text strong {
+      color: #374151;
+      font-weight: 500;
+    }
+
+    /* ── Modal "Esqueci a senha" ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px 30px;
+      width: 340px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+      transform: translateY(12px);
+      transition: transform 0.22s;
+    }
+
+    .modal-overlay.show .modal { transform: translateY(0); }
+
+    .modal-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .modal-sub {
+      font-size: 12px;
+      color: var(--gray-text);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn-modal-cancel {
+      flex: 1;
+      padding: 9px;
+      background: var(--gray-bg);
+      color: #374151;
+      border: 0.5px solid var(--gray-border);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-modal-cancel:hover { background: var(--gray-border); }
+
+    .btn-modal-send {
+      flex: 1;
+      padding: 9px;
+      background: var(--blue-mid);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-modal-send:hover { background: #1D4ED8; }
+
+    /* ── Toast (copiado do styles.css) ── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #111827;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 600;
+      pointer-events: none;
+    }
+
+    .toast.show { opacity: 1; }
+
+    /* ── Responsivo mobile ── */
+    @media (max-width: 640px) {
+      body { background: var(--white); align-items: flex-start; }
+
+      .login-wrapper {
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+      }
+
+      .login-brand {
+        width: 100%;
+        padding: 32px 24px;
+        flex-direction: row;
+        gap: 16px;
+        justify-content: flex-start;
+      }
+
+      .brand-icon   { width: 48px; height: 48px; font-size: 22px; margin-bottom: 0; flex-shrink: 0; }
+      .brand-name   { font-size: 17px; }
+      .brand-tagline, .brand-divider, .brand-features { display: none; }
+
+      .login-form-side { padding: 28px 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================== CARD DE LOGIN ======================== -->
+  <div class="login-wrapper">
+
+    <!-- Lado esquerdo: identidade da marca -->
+    <div class="login-brand">
+      <div class="brand-icon"><i class="ti ti-building-community"></i></div>
+      <div class="brand-name">CEUB <span>RH</span></div>
+      <p class="brand-tagline">Gestão de pessoas<br>inteligente e eficiente</p>
+      <div class="brand-divider"></div>
+      <ul class="brand-features">
+        <li><i class="ti ti-users"></i>Gestão de candidatos</li>
+        <li><i class="ti ti-calendar-event"></i>Agendamento de entrevistas</li>
+        <li><i class="ti ti-star"></i>Avaliações e desempenho</li>
+        <li><i class="ti ti-chart-bar"></i>Relatórios gerenciais</li>
+      </ul>
+    </div>
+
+    <!-- Lado direito: formulário -->
+    <div class="login-form-side">
+      <h1 class="login-title">Bem-vindo de volta</h1>
+      <p class="login-subtitle">Faça login para acessar o painel de RH</p>
+
+      <!-- E-mail -->
+      <div class="form-field">
+        <label for="email">E-mail corporativo</label>
+        <div class="input-wrap">
+          <i class="ti ti-mail"></i>
+          <input id="email" type="email" placeholder="seu@ceub.edu.br" autocomplete="username" />
+        </div>
+      </div>
+
+      <!-- Senha -->
+      <div class="form-field">
+        <label for="senha">Senha</label>
+        <div class="input-wrap">
+          <i class="ti ti-lock"></i>
+          <input id="senha" type="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+      </div>
+
+      <!-- Esqueci a senha -->
+      <div class="forgot-row">
+        <a class="forgot-link" onclick="openForgot()">Esqueci minha senha</a>
+      </div>
+
+      <!-- Botão entrar -->
+      <button class="btn-login" onclick="entrar()">
+        <i class="ti ti-login"></i>
+        Entrar
+      </button>
+
+      <!-- Rodapé informativo -->
+      <div class="form-footer">
+        <div class="footer-avatar">AD</div>
+        <p class="footer-text">
+          <strong>Acesso restrito</strong><br>
+          Somente colaboradores autorizados
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== MODAL ESQUECI SENHA ======================== -->
+  <div class="modal-overlay" id="modal-forgot">
+    <div class="modal">
+      <p class="modal-title"><i class="ti ti-key" style="margin-right:6px;color:var(--blue-mid)"></i>Recuperar senha</p>
+      <p class="modal-sub">Informe seu e-mail corporativo e enviaremos as instruções para redefinir sua senha.</p>
+      <div class="input-wrap">
+        <i class="ti ti-mail"></i>
+        <input type="email" placeholder="seu@ceub.edu.br" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closeForgot()">Cancelar</button>
+        <button class="btn-modal-send"   onclick="sendForgot()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== TOAST ======================== -->
+  <div class="toast" id="toast">
+    <i class="ti ti-check"></i>
+    <span id="toast-msg"></span>
+  </div>
+
+  <script>
+    /* ---- Redireciona para o sistema ao clicar em Entrar ---- */
+    function entrar() {
+      showToast('Autenticando…');
+      setTimeout(() => { window.location.href = 'main.html'; }, 900);
+    }
+
+    /* ---- Modal Esqueci a Senha ---- */
+    function openForgot()  { document.getElementById('modal-forgot').classList.add('show'); }
+    function closeForgot() { document.getElementById('modal-forgot').classList.remove('show'); }
+    function sendForgot()  {
+      closeForgot();
+      showToast('Instruções enviadas para o seu e-mail');
+    }
+
+    /* ---- Fechar modal ao clicar no overlay ---- */
+    document.getElementById('modal-forgot').addEventListener('click', function(e) {
+      if (e.target === this) closeForgot();
+    });
+
+    /* ---- Toast (mesmo padrão do scripts.js) ---- */
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    /* ---- Enter no campo de senha também entra ---- */
+    document.getElementById('senha').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') entrar();
+    });
+  </script>
+
+</body>
+</html>
